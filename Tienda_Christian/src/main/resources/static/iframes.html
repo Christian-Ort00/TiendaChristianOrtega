@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<!-- Se actualiza la página index para que contenga nuevas etiquetas meta y demás etiquetas para la semántica del body -->
 <html lang="es">
 <head>
-    <!-- Aquí irían las etiquetas meta, título y enlace a CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos con iframe</title>
 </head>
 <body>
+
     <header>
-        <!-- Contenido del encabezado -->
+        <!-- Contenido del header -->
     </header>
 
     <nav>
-        <!-- Menú de navegación -->
+        <!-- Contenido de navegación -->
     </nav>
 
     <aside>
@@ -23,14 +25,16 @@
         <article>
             <header><h3>La página de la Fidélitas</h3></header>
             <iframe src="https://sistemas.ufidelitas.ac.cr/" width="700" height="400"></iframe>
-            <footer>Escuela de Sistemas de la Fide</footer>
+            <footer>Escuela de Sistemas de la Fidélitas</footer>
         </article>
 
         <article>
-            <header><h3>Video de Youtube</h3></header>
-            <iframe width="500" height="280"
+            <header><h3>Video de YouTube</h3></header>
+            <iframe
+                width="500"
+                height="280"
                 src="https://www.youtube.com/embed/kNLXP-BeF7w"
-                title="Youtube"
+                title="YouTube"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen>
@@ -40,18 +44,19 @@
 
         <article>
             <header><h3>Stem Center</h3></header>
-          <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.9805280581695!2d-84.03794158516743!3d9.928307374201012"
-    width="600"
-    height="450"
-    style="border:0;"
-    allowfullscreen="true"
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-
-            <footer>La ubicación del Stem Center en Google Maps</footer>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.9805280581695!2d-84.037941558516743!3d9.935112090154756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fa5e4e8bb59b%3A0x2cf5792b9f7fa8c!2sUniversidad%20Fid%C3%A9litas%20(STEM%20Center)!5e0!3m2!1ses!2scr!4v1680215601229!5m2!1ses!2scr"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+            
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <footer>La ubicación del STEM Center en Google Maps</footer>
         </article>
+
     </section>
+
 </body>
 </html>
