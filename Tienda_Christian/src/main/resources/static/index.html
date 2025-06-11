@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>Hola Mundo!</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TechShop</title>        
     </head>
     <body>
-        <div>Bienvenidos</div>
-        <a href="ejemplo2.html">Ir al ejemplo 2</a>
+        <header th:replace="~{layout/plantilla :: header}"/>
+        
+        <footer th:replace="~{layout/plantilla :: footer}"/>          
     </body>
 </html>
+ 
