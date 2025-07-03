@@ -3,8 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package Tienda.Web.service.Impl;
-
+package Tienda.Web.service.impl;
 
 import Tienda.Web.dao.CategoriaDao;
 import Tienda.Web.domain.Categoria;
@@ -16,20 +15,20 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
-
-     @Autowired
+    
+    @Autowired
     private CategoriaDao categoriaDao;
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional(readOnly=true)
     public List<Categoria> getCategorias(boolean activos) {
-        var lista = categoriaDao.findAll();
+        var lista=categoriaDao.findAll();
         if (activos) {
-            lista.removeIf(e -> !e.isActivo());
+           lista.removeIf(e -> !e.isActivo());
         }
         return lista;
     }
-
+    
     @Override
     @Transactional(readOnly = true)
     public Categoria getCategoria(Categoria categoria) {
@@ -49,5 +48,4 @@ public class CategoriaServiceImpl implements CategoriaService {
     }
     
 }
- 
  
