@@ -5,7 +5,6 @@
 
 package Tienda.Web.domain;
 
-
 import jakarta.persistence.*;
 import java.io.Serializable;
 import lombok.Data;
@@ -27,8 +26,8 @@ public class Categoria implements Serializable {
     private boolean activo;
     
     @OneToMany
-    @JoinColumn(name="id_categoria")
-    List<Producto> productos;
+@JoinColumn(name="id_categoria")
+List<Producto> productos;
 
     public Categoria() {
     }

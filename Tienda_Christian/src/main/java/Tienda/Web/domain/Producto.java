@@ -1,26 +1,45 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package Tienda.Web.service;
+package Tienda.Web.domain;
 
-import Tienda.Web.domain.Categoria;
-import java.util.List;
+import jakarta.persistence.*;
+import java.io.Serializable;
+import lombok.Data;
 
-public interface CategoriaService {
-    
-    // Se obtiene un listado de categorias en un List
-    public List<Categoria> getCategorias(boolean activos);
-    
-    // Se obtiene un Categoria, a partir del id de un categoria
-    public Categoria getCategoria(Categoria categoria);
-    
-    // Se inserta un nuevo categoria si el id del categoria esta vacío
-    // Se actualiza un categoria si el id del categoria NO esta vacío
-    public void save(Categoria categoria);
-    
-    // Se elimina el categoria que tiene el id pasado por parámetro
-    public void delete(Categoria categoria);
+@Data​
+@Entity​
+@Table(name="producto")
+public class Producto implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id​
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_producto")
+    private Long idProducto;    
+    private String descripcion;
+    private String detalle;
+    private double precio;
+    private int existencias;
+    private String rutaImagen;
+    private boolean activo;
+
+    @ManyToOne​
+    @JoinColumn(name="id_categoria")
+    Categoria categoria;
+
+    public Producto() {    
+    }
+
+
+    public Producto(String descripcion, String detalle, double precio, int existencias, String imagen, boolean activo) {
+        this.descripcion = descripcion;
+        this.detalle = detalle;
+        this.precio = precio;
+        this.existencias = existencias;
+        this.rutaImagen = imagen;
+        this.activo = activo;
+    }
 }
- 
