@@ -84,7 +84,7 @@
                                             <td>[[${contador.count}]]</td>
                                             <td>[[${categoria.descripcion}]]</td>
                                             <td th:text="${categoria.activo} ? 'Activa' : 'Inactiva'" />
-                                            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                            <td sec:authorize="hasRole ('ROLE.ADMIN')">
                                             <td><a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
                                                    class="btn btn-danger">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
@@ -99,6 +99,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-3">
                         <div class="card text-center bg-success text-white mb-3">
                             <div class="card-body">

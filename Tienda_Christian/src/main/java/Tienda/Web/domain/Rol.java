@@ -5,8 +5,6 @@
 
 package Tienda.Web.domain;
 
-
-
 import jakarta.persistence.*;
 import java.io.Serializable;
 import lombok.Data;
@@ -26,4 +24,3 @@ public class Rol implements Serializable {
     @Column (name = "id_usuario")
     private Long idUsuario;    
 }
- 

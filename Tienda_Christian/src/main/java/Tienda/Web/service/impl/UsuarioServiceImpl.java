@@ -3,8 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package Tienda.Web.service.Impl;
-
+package Tienda.Web.service.impl;
 
 import Tienda.Web.dao.RolDao;
 import Tienda.Web.dao.UsuarioDao;
@@ -77,4 +76,3 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuarioDao.delete(usuario);
     }
 }
- 

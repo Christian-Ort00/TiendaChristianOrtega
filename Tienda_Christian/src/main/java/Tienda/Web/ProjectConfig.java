@@ -1,4 +1,3 @@
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -23,6 +22,11 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+
 
 @Configuration
 public class ProjectConfig implements WebMvcConfigurer {
@@ -61,44 +65,44 @@ public class ProjectConfig implements WebMvcConfigurer {
     }
     
     /* Los siguiente métodos son para implementar el tema de seguridad dentro del proyecto */
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
-        registry.addViewController("/index").setViewName("index");
-        registry.addViewController("/login").setViewName("login");
-        registry.addViewController("/registro/nuevo").setViewName("/registro/nuevo");
- }
+   // @Override
+   // public void addViewControllers(ViewControllerRegistry registry) {
+   //     registry.addViewController("/").setViewName("index");
+   //     registry.addViewController("/index").setViewName("index");
+   //     registry.addViewController("/login").setViewName("login");
+   //     registry.addViewController("/registro/nuevo").setViewName("/registro/nuevo");
+// }
 
-@Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests((request) -> request
-                .requestMatchers("/","/index","/errores/**",
-                        "/carrito/**","/pruebas/**","/reportes/**",
-                        "/registro/**","/js/**","/webjars/**")
-                        .permitAll()
-                .requestMatchers(
-                        "/producto/nuevo","/producto/guardar",
-                        "/producto/modificar/**","/producto/eliminar/**",
-                        "/categoria/nuevo","/categoria/guardar",
-                        "/categoria/modificar/**","/categoria/eliminar/**",
-                        "/usuario/nuevo","/usuario/guardar",
-                        "/usuario/modificar/**","/usuario/eliminar/**",
-                        "/reportes/**"
-                ).hasRole("ADMIN")
-                .requestMatchers(
-                        "/producto/listado",
-                        "/categoria/listado",
-                        "/usuario/listado"
-                ).hasAnyRole("ADMIN", "VENDEDOR")
-                .requestMatchers("/facturar/carrito")
-                .hasRole("USER")
-                )
-                .formLogin((form) -> form
-                .loginPage("/login").permitAll())
-                .logout((logout) -> logout.permitAll());
-        return http.build();
-    }
+//@Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeHttpRequests((request) -> request
+//                .requestMatchers("/","/index","/errores/**",
+//                        "/carrito/**","/pruebas/**","/reportes/**",
+//                        "/registro/**","/js/**","/webjars/**")
+//                        .permitAll()
+//                .requestMatchers(
+//                        "/producto/nuevo","/producto/guardar",
+//                        "/producto/modificar/**","/producto/eliminar/**",
+//                        "/categoria/nuevo","/categoria/guardar",
+//                        "/categoria/modificar/**","/categoria/eliminar/**",
+//                        "/usuario/nuevo","/usuario/guardar",
+//                        "/usuario/modificar/**","/usuario/eliminar/**",
+//                        "/reportes/**"
+//                ).hasRole("ADMIN")
+//                .requestMatchers(
+//                        "/producto/listado",
+//                        "/categoria/listado",
+//                        "/usuario/listado"
+//                ).hasAnyRole("ADMIN", "VENDEDOR")
+//                .requestMatchers("/facturar/carrito")
+//                .hasRole("USER")
+//                )
+//                .formLogin((form) -> form
+//                .loginPage("/login").permitAll())
+//                .logout((logout) -> logout.permitAll());
+//        return http.build();
+//    }
 
 /* El siguiente método se utiliza para completar la clase no es 
     realmente funcional, la próxima semana se reemplaza con usuarios de BD */    
@@ -123,11 +127,11 @@ public class ProjectConfig implements WebMvcConfigurer {
 //    }
     
     @Autowired
-    private UserDetailService userDetailService;
+    private UserDetailsService userDetailsService;
     
     @Autowired
-    public void configureGlobal(AuthentiacationManagerBuilder build)throws Exception {
-        build.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+    public void configurerGlobal (AuthenticationManagerBuilder build) throws Exception {
+        build.userDetailsService (userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
 }
  

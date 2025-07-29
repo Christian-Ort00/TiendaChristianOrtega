@@ -5,10 +5,12 @@
 
 package Tienda.Web.controller;
 
-
-import Tienda.Webdomain.Usuario;
+import Tienda.Web.domain.Usuario;
 import Tienda.Web.service.UsuarioService;
-import Tienda.Web.service.FirebaseStorageService;
+
+import Tienda.Web.service.impl.FireBaseStorageServiceImpl;
+import Tienda.Web.service.FireBaseStorageService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +41,7 @@ public class UsuarioController {
     }
 
     @Autowired
-    private FirebaseStorageService firebaseStorageService;
+    private FireBaseStorageService firebaseStorageService;
 
     @PostMapping("/guardar")
     public String usuarioGuardar(Usuario usuario,
